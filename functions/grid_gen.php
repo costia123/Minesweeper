@@ -1,9 +1,6 @@
 <?php
-// Minesweeper in PHP by Daniel Porter - thisismywww.com
-// Version 1.0 -  28 Sept 2018
-// class to handle building the content
+
 class grid_gen{
-  // devlare variables
   public $table_html = "";
   public $pre_table = "";
   public $post_table = "";
@@ -19,7 +16,6 @@ class grid_gen{
   
   function form_content(){
     global $data;
-    // Generate the form content, pre and post Populate the pre and post form data on on the grid, post is just for submit
     
     if (($data->mode == "game") || ($data->mode == "new") || ($data->mode=="start")){
     $this->pre_table.="<form action='index.php' method='post' id='minesweeper'>\n";
@@ -77,7 +73,6 @@ class grid_gen{
     if ($data->mode != "game_won"){
     $this->post_table.="</form>\n";
     }
-    // if the game is over or game has been won, display message
     if ($data->mode == "game_over"){
       $this->pre_table.= "Game Over\n";
     }
@@ -88,14 +83,12 @@ class grid_gen{
   }
   
   function options_builder($number){
-    // function to build options up to number specified
     for ($x=8;$x<=$number;$x++){
       $this->pre_table.=" <option value='$x'>$x</option>\n";
     }
   }
   
   function create_table(){
-    // loop to build grid. Only extra element is to mark block as red if block is submitted
     global $data;
     $this->table_html .= "<table border='1'>\n";
       for ($x=10;$x<($data->num_rows+10);$x++){
@@ -117,8 +110,6 @@ class grid_gen{
   }
   
   function cell_content($block){
-  // Case is when grid is just created
-  // else if the cell is visible, display it's content, otherwise, create form button 
   global $data;
     if ($data->mode == "start"){
       $this->table_html .= "<input type='hidden' name='mode' value='game'><input type='submit' name='submitted_block' value='". $block ."' style='height:18px; width=18px; text-indent:-9999px' />";
@@ -149,7 +140,6 @@ class grid_gen{
   
   
   function generate(){
-  // function that builds for and table data as long as mode isn't new.
     global $data;
     $this->form_content();
     echo $this->pre_table;
@@ -160,6 +150,5 @@ class grid_gen{
     echo $this->post_table;
   }
 }
-// instance grid_gen class
 $grid_gen = new grid_gen();
 ?>
