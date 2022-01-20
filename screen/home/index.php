@@ -17,7 +17,6 @@ include($_SERVER["DOCUMENT_ROOT"]."/minesweeper/config.php");
 <?php include($componentsPath."header/index.php"); ?> 
 
 <?php include($componentsPath."minesweeperBlock/index.php"); ?> 
-      
 </body>
 <script src="../../js/bootstrap.js"></script>
 </html>
