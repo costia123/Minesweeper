@@ -6,5 +6,5 @@ $screenPath = $_SERVER["DOCUMENT_ROOT"]."/minesweeper/screen/";
 $componentsPath = $_SERVER["DOCUMENT_ROOT"]."/minesweeper/components/";
 $assetsPath = $_SERVER["DOCUMENT_ROOT"]."/minesweeper/assets/";
 $actionsPath = $_SERVER["DOCUMENT_ROOT"]."/minesweeper/action/";
-$functionsPath = $_SERVER["DOCUMENT_ROOT"]."/minesweeper/functions/";
+$functionsPath = $_SERVER["DOCUMENT_ROOT"]."/minesweeper/functions/"; // la conf qui gg tout les path un genre de copy de absolute path de babel
 ?>

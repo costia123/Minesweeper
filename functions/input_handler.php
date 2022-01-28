@@ -1,7 +1,7 @@
 <?php
 
 class data_handler{
-  public $mode = "";          
+  public $mode = "";          // je définie ma valeur 
   public $grid_reference = array();   
   public $cell_values = array();   
   public $mine_cells = array();    
@@ -14,15 +14,14 @@ class data_handler{
   public $submitted_block;      
   public $mark_toggle;        
   
-  function __construct(){    
+  function __construct(){     // la c'est la partie qui va gg tout genre le nombre de row col mine ensuite les function selon le mode ....
     if(isset($_POST['mode'])){
       $this->mode=$_POST['mode']; 
-      if($this->mode == "game"){
+      if($this->mode == "game"){ // si c'est en mode game toujours pas start
         $this->submitted_block = $_POST['submitted_block'];
         $this->num_rows = $_POST['num_rows'];
         $this->num_cols = $_POST['num_cols'];
-                $this->num_mines = $_POST['num_mines'];
-        
+        $this->num_mines = $_POST['num_mines'];
         if(!isset($_POST['cell_values'])){
         $this->grid_reference = unserialize($_POST['grid_reference']);
         $this->generate_values();
@@ -34,7 +33,7 @@ class data_handler{
           $this->visible_cells = unserialize($_POST['visible_cells']);
           $this->marked_cells = unserialize($_POST['marked_cells']);
           if(isset($_POST['mark_toggle'])){
-            $this->mark_toggle = $_POST['mark_toggle'];
+            $this->mark_toggle = $_POST['mark_toggle']; // le mode drapuea on ou off en dessous 
           }else{
             $this->mark_toggle = false;
           }
@@ -49,7 +48,7 @@ class data_handler{
     }
   }
 
-  function generate_grid(){
+  function generate_grid(){  //  la gen de grid avec les difculté 
     switch ($_POST['difficulty']){
       case "easy":
         $this->num_rows = "8";
@@ -79,7 +78,7 @@ class data_handler{
     }
   }
 
-  function generate_values(){
+  function generate_values(){ // la func qui gg les valeur
     $this->mine_cells = $this->grid_reference;
     $key = array_search($this->submitted_block, $this->mine_cells);
     unset($this->mine_cells[$key]);
@@ -99,7 +98,7 @@ class data_handler{
     $this->process_cell($this->submitted_block);  
   }
   
-  function play_game(){
+  function play_game(){ // la func qui lance la game
     
     if ($this->mark_toggle == true){
       $this->process_cell($this->submitted_block);
@@ -121,15 +120,15 @@ class data_handler{
     }
   }
 
-  function click_mine(){
+  function click_mine(){ // si tu tombe sur une mine perdu
     $this->game_over();
   }
   
-  function click_number(){
+  function click_number(){ // si chifre ça 
     $this->process_cell($this->submitted_block);
   }
 
-  function click_blank(){
+  function click_blank(){ // si c'est une case vide
     
     $cells_to_check = $this->get_surrounding_cells($this->submitted_block);  
     $cells_checked = array(); 
@@ -154,7 +153,7 @@ class data_handler{
     $this->mode = "game_over";
   }
   
-  function get_surrounding_cells($cell){
+  function get_surrounding_cells($cell){ // la c'est la truc qui fait que des fois ça dévoile bcp de case et que le jeux a du sens genre qui suit les regle
     $cells_to_check = array();
     array_push($cells_to_check, substr($cell,0,2)-1 .substr($cell,2,2)-1);
     array_push($cells_to_check, substr($cell,0,2)-1 .substr($cell,2,2));
@@ -169,7 +168,7 @@ class data_handler{
     return $cells_to_check;
   }
 
-  function process_cell($cell){
+  function process_cell($cell){ // la gestion des cell
     if(($cell == $this->submitted_block) && ($this->mark_toggle == true) && (!in_array($this->submitted_block,$this->marked_cells))){
       array_push($this->marked_cells,$this->submitted_block);
       return;
@@ -185,7 +184,7 @@ class data_handler{
     }
   }
   
-  function is_game_won(){
+  function is_game_won(){ // si c win 
     if((isset($_POST)) && ((count($this->grid_reference) - count($this->visible_cells)) == count($this->mine_cells))){
     $this->mode="game_won";
     }

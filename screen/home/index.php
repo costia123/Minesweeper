@@ -14,9 +14,9 @@ include($_SERVER["DOCUMENT_ROOT"]."/minesweeper/config.php");
 </head>
 <body>
 
-<?php include($componentsPath."header/index.php"); ?> 
+<?php include($componentsPath."header/index.php"); ?> <!-- compasant header -->
 
-<?php include($componentsPath."minesweeperBlock/index.php"); ?> 
+<?php include($componentsPath."minesweeperBlock/index.php"); ?>  <!-- le jeux -->
 </body>
 <script src="../../js/bootstrap.js"></script>
 </html>
