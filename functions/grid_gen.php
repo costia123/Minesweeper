@@ -65,11 +65,11 @@ class grid_gen{
       $this->pre_table.="<input type='hidden' name='mine_cells' value='" . htmlspecialchars(serialize($data->mine_cells)) . "'>\n"; 
       $this->pre_table.="<input type='hidden' name='visible_cells' value='" . htmlspecialchars(serialize($data->visible_cells)) . "'>\n"; 
       $this->pre_table.="<input type='hidden' name='marked_cells' value='" . htmlspecialchars(serialize($data->marked_cells)) . "'>\n";
-      $this->pre_table.="Toggle Marked <input class='test' type='checkbox' name='mark_toggle'"; // la c'est le truc pour les flag 
+      $this->pre_table.="<div>Flag Mode <input class='test' type='checkbox' name='mark_toggle' "; // la c'est le truc pour les flag 
       if($data->mark_toggle == true){
         $this->pre_table.=" checked='checked'";
       }
-      $this->pre_table.=">\n";
+      $this->pre_table.="> </div>\n";
     }
 
     if ($data->mode == "start"){
