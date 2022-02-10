@@ -18,7 +18,7 @@ echo "
 		Votre but est aussi de terminer la partie de 
 		démineur le plus rapidement possible.</p>
 		<p>Il y a 3 niveaux de difficulté :
-		Débutant, Moyen, et Expert, le plus difficile.
+		easy, medium, et hard, le plus difficile.
 	    </p>
 		<p>Le démineur fonctionne en ligne avec tous les navigateurs récents et ne nécessite ni flash ni aucune installation particulière.
 		Il est bien sûr entièrement gratuit.
